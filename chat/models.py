@@ -13,3 +13,7 @@ class Group(models.Model):
     owner = models.ForeignKey(CustomUser,related_name="groups_created",on_delete=models.CASCADE)
     participants = models.ManyToManyField(CustomUser,related_name="groups_in")
     admins = models.ManyToManyField(CustomUser,related_name="admin_in")
+    
+    
+    def __str__(self) -> str:
+        return self.name

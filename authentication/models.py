@@ -61,8 +61,8 @@ class CustomUser(AbstractBaseUser,PermissionsMixin):
 # Create your models here.
 class UserProfile(models.Model):
     owner = models.OneToOneField(CustomUser,related_name="profile",on_delete=models.CASCADE)
-    profile_pic = models.ImageField(upload_to="profiles/images/")
+    profile_pic = models.ImageField(upload_to="profiles/images/",blank=True)
     username= models.CharField(max_length=150)
     email = models.EmailField()
-    bio = models.TextField()
+    bio = models.TextField(blank=True)
     

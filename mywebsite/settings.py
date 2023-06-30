@@ -42,11 +42,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #apps
-    'chat',
-    'authentication'
+    'chat.appsChatConfig',
+    'authentication.apps.AuthenticationConfig'
 ]
 
 ASGI_APPLICATION = 'mywebsite.asgi.application'
+
+REST_FRAMEWORK = {
+    'AUTHENTICATION_CLASSES': ["authentication.backends.JWTAuthentication"]
+}
+
 
 CHANNEL_LAYERS = {
     'default':{
@@ -145,3 +150,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR,"static/media")
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'authentication.CustomUser'
+
+JWT_SECRET_KEY = config("JWT_SECRET_KEY")
+ALGORITHM = config("ALGORITHM")
