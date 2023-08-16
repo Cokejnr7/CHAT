@@ -1,7 +1,8 @@
 from django.urls import path
 
-from .views import lobby
+from . import views
 
 urlpatterns = [
-    path('',lobby)
+    path("", views.lobby),
+    path("group/", views.GroupListCreateAPIView.as_view()),
 ]
