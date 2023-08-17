@@ -53,18 +53,16 @@ REST_FRAMEWORK = {
 }
 
 
-CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "channels_redis.core.RedisChannelLayer",
-        "CONFIG": {
-            "hosts": [
-                (
-                    "redis://default:5AakkZ1xHOmEUqRZ0lXe@containers-us-west-51.railway.app:5561"
-                )
-            ],
-        },
-    },
-}
+# CHANNEL_LAYERS = {
+#     "default": {
+#         "BACKEND": "channels_redis.core.RedisChannelLayer",
+#         "CONFIG": {
+#             "hosts": [(config("REDIS_URI"))],
+#         },
+#     },
+# }
+
+CHANNEL_LAYERS = {"default": {"BACKEND": "channels.layers.InMemoryChannelLayer"}}
 
 
 MIDDLEWARE = [

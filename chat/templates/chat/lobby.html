@@ -10,12 +10,19 @@
   </head>
   <body>
     <h1>lets chat!</h1>
+    <div>
+    </div>
     <form id="form">
       <input type="text" name="message" />
-      <div class="text-area"></div>
+      <div class="text-area">
+        {% for message in messages %}
+        <p>{{message.sender}}: {{message.text}}</p>
+        {% endfor %}
+      </div>
     </form>
     <script type="text/javascript">
-      let url = `ws://${window.location.host}/ws/socket-server/my_room/`;
+      const length = window.location.pathname.split("/").length
+      let url = `ws://${window.location.host}/ws/socket-server/`+ window.location.pathname.split("/")[length-1]+"/";
 
       const chatSocket = new WebSocket(url);
 

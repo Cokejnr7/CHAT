@@ -35,9 +35,12 @@ class Thread(models.Model):
     users = models.ManyToManyField(CustomUser)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
-    threads = ThreadManager()
+    objects = ThreadManager()
 
 
 class Message(models.Model):
-    # sender = models.
-    pass
+    thread = models.ForeignKey(
+        Thread, on_delete=models.CASCADE, related_name="messages"
+    )
+    sender = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    text = models.TextField()
