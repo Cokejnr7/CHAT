@@ -11,7 +11,7 @@ User = get_user_model()
 class TokenAuthMiddleware(BaseMiddleware):
     async def __call__(self, scope, recieve, send):
         user = await self.get_user(scope, send)
-        print(scope)
+        scope["user"] = user
         return await super().__call__(scope, recieve, send)
 
     async def send_authentication_error(self, send, error):

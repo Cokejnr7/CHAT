@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     # apps
     "chat.apps.ChatConfig",
     "authentication.apps.AuthenticationConfig",
+    # 3rd party
+    "rest_framework",
 ]
 
 ASGI_APPLICATION = "mywebsite.asgi.application"
